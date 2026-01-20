@@ -9,7 +9,7 @@ import { Instagram, Linkedin, Facebook, Globe, LinkIcon } from "lucide-react";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp"; // Using standard MUI icon for consistency
 
 const socialLinks = [
-  { icon: <WhatsAppIcon size={20} />, href: "https://chat.whatsapp.com/DS956oN4CHII3JdjJsFOaV" },
+  { icon: <WhatsAppIcon size={20} />, href: "https://chat.whatsapp.com/G7J9x0AlueL782BQHRpxWj" },
   { icon: <Instagram size={20} />, href: "https://www.instagram.com/ieeesb_nitdgp" },
   { icon: <Linkedin size={20} />, href: "https://in.linkedin.com/company/ieeesbnitdgp" },
   { icon: <Facebook size={20} />, href: "https://www.facebook.com/nitdgpieeesociety/" },
