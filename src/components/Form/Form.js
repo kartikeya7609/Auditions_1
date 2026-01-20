@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Form.css";
 import questions from "./Questions";
 import Input from "./Input";
-import { jssPreset, Slide } from "@material-ui/core";
+import { Slide } from "@material-ui/core";
 import { Paper } from "@mui/material";
 import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRight";
@@ -33,12 +33,8 @@ function Form() {
       setLoading(false);
     });
 
-    if (loading) {
-      return <Loader />;
-    }
-    // Cleanup subscription
     return () => unsubscribe();
-  }, [auth, navigate]);
+  }, [navigate]);
   const [index, setIndex] = useState(0);
   const [slideIn, setSlideIn] = useState(true);
   const [slideDirection, setSlideDirection] = useState("down");
@@ -70,13 +66,6 @@ function Form() {
       data[11].replace(" ", "") !== ""
     )
       error = true;
-  };
-  const errror_messsage = () => {
-    if (!error)
-      alert(
-        "please fill the form completely which is mandatory for submitting the form !"
-      );
-    error = true;
   };
   const onArrowClick = (direction, error) => {
     const oppDirection = direction === "left" ? "right" : "left";
@@ -176,6 +165,10 @@ function Form() {
     "",
     "",
   ]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div id="form-page">

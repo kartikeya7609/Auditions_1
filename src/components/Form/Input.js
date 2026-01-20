@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Input.css";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
