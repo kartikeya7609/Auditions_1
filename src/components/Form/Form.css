@@ -1,0 +1,320 @@
+/* Modern Root Variables */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+	font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+	--primary-gradient: linear-gradient(135deg, #667eea 0%, #beb6c7 1%);
+	--glass-bg: rgba(255, 255, 255, 0.08);
+	--glass-border: rgba(255, 255, 255, 0.15);
+	--text-main: #ffffff;
+	--text-dim: rgba(255, 255, 255, 0.7);
+	--accent: #00f2fe;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	color: white;
+	font-size: 13px;
+	font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+button {
+	cursor: pointer;
+	font: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+/* Fix the Three.js Globe to the background */
+canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	pointer-events: auto;
+	/* allow interaction if needed */
+}
+
+#form-page {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+	/* Add some vertical breathing room */
+	box-sizing: border-box;
+}
+
+#home {
+	height: 100vh;
+	width: 100vw;
+	background: #0f172a;
+	/* IEEE Standard-ish font (Roboto/Open Sans) */
+	font-family: "Inter", system-ui, -apple-system, sans-serif;
+	font-size: 14px;
+	font-weight: 100;
+	/* Thinner text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	background-attachment: fixed;
+}
+
+/* 2. The Form Card: Strict Sizing & Safety Margins */
+.form {
+	background: transparent !important;
+	backdrop-filter: blur(0px);
+	-webkit-backdrop-filter: blur(0px);
+	border: 1px solid var(--glass-border) !important;
+	border-radius: 28px !important;
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+	color: #dbeafe !important;
+
+	/* Responsive Size Logic */
+	width: 90%;
+	max-width: 550px;
+
+	/* Vertical Constraint */
+	max-height: 85vh;
+	/* Fixed max height */
+	height: auto;
+	/* Shrink if content is small */
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	font-weight: 100;
+	/* Layout & Positioning */
+	margin: 0 !important;
+	padding: 30px !important;
+	position: relative;
+	z-index: 10;
+	box-sizing: border-box;
+	overflow: hidden;
+	/* Prevent child from spilling out */
+}
+
+/* 3. Internal Content Area: The Scroll Fix */
+/* Renamed from nth-child to explicit class */
+/* 1. Ensure the scrollable area doesn't allow horizontal overflow */
+.form-content-scrollable {
+	width: 100%;
+	flex: 1 1 auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/* Stops horizontal 'overhiding' */
+	display: block;
+	/* Block layout is better for text wrapping than flex */
+	padding-right: 15px;
+	box-sizing: border-box;
+}
+
+/* 2. Target the actual question text inside your Input component */
+/* Adjust the selector (h1, h2, or p) based on what you used in Input.js */
+.form-content-scrollable h1,
+.form-content-scrollable h2,
+.form-content-scrollable h3,
+.form-content-scrollable p {
+	width: 100%;
+	max-width: 100%;
+	/* Force wrapping within container */
+	white-space: pre-wrap !important;
+	/* Preserve formatting but wrap */
+	word-wrap: break-word !important;
+	overflow-wrap: break-word !important;
+	display: block;
+	line-height: 1.5;
+	text-align: left;
+	margin-bottom: 1.5rem;
+}
+
+/* FIX: Override bad width from Input.css that causes overflow */
+.essay,
+.form .essay {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+/* FIX: Vertical Textarea Scrolled-out-of-view issue */
+textarea.MuiInputBase-input {
+	height: auto !important;
+	min-height: 100px;
+	/* Ensure space exists */
+	padding: 10px !important;
+	/* Reset padding for multiline */
+	overflow-y: auto !important;
+	/* Allow internal scrolling if needed */
+}
+
+.input-container {
+	width: 100%;
+	/* min-height removed to allow scrolling */
+	display: flex;
+	flex-direction: column;
+}
+
+/* 3. Ensure the wrapper doesn't expand beyond the parent */
+.input-container-wrapper {
+	width: 100%;
+	/* min-height removed */
+	display: block;
+}
+
+/* Custom Scrollbar for the internal div */
+.form-content-scrollable::-webkit-scrollbar {
+	width: 2px;
+}
+
+.form-content-scrollable::-webkit-scrollbar-thumb {
+	background: var(--accent);
+	border-radius: 5px;
+}
+
+/* 4. Fixed Components: Progress Bar & Navigation */
+.MuiLinearProgress-root {
+	width: 100% !important;
+	height: 8px !important;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	flex-shrink: 0;
+	/* Prevents progress bar from squishing */
+}
+
+.arrows {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	/* spacing from content */
+	padding-top: 0;
+	flex-shrink: 0;
+	/* Prevents arrows from disappearing */
+}
+
+svg[class*="ArrowCircle"] {
+	font-size: 45px !important;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+svg[class*="ArrowCircle"]:hover {
+	transform: scale(1.1);
+	color: var(--accent);
+}
+
+/* 5. Responsive Breakpoints */
+@media (max-width: 600px) {
+	.form {
+		padding: 20px !important;
+		width: 92%;
+		/* max-height: 90vh; */
+		/* Let it grow */
+	}
+
+	svg[class*="ArrowCircle"] {
+		font-size: 40px !important;
+	}
+}
+
+/* 6. Landscape Mode Fix */
+@media (max-height: 500px) {
+	.form {
+		/* max-height: 95vh; */
+		padding: 15px !important;
+	}
+
+	.form>div:nth-child(2),
+	.form-content-scrollable {
+		margin: 10px 0;
+	}
+}
+
+/* User Requested Updates */
+.button {
+	background: linear-gradient(270deg, rgba(41, 33, 137, 0.75) 19.28%, rgba(0, 178, 255, 0.4875) 100%);
+	border-radius: 10px;
+	border: 2px solid cyan;
+	color: #fff;
+	padding: 0.5em 1.25em;
+	z-index: 999;
+	margin: 15px;
+	box-shadow: 0px 1.7px 2.2px rgba(0, 0, 0, 0.02),
+		0px 4px 5.3px rgba(0, 0, 0, 0.028), 0px 7.5px 10px rgba(0, 0, 0, 0.035),
+		0px 13.4px 17.9px rgba(0, 0, 0, 0.042),
+		0px 25.1px 33.4px rgba(0, 0, 0, 0.05), 0px 60px 80px rgba(0, 0, 0, 0.07);
+}
+
+.button:active {
+	transform: scale(1.01);
+}
+
+.form .input {
+	margin-bottom: 50px;
+}
+
+/* Fix for MUI Input visibility */
+/* Fix for MUI Input visibility */
+.MuiFilledInput-root {
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	/* Proper contrast bg */
+	border-radius: 4px !important;
+}
+
+.MuiFilledInput-root:hover {
+	background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.MuiInputBase-input {
+	color: #ffffff !important;
+	font-weight: 100 !important;
+	/* Clean thin text */
+	padding-top: 25px !important;
+	padding-bottom: 8px !important;
+	height: auto !important;
+	background: transparent !important;
+	caret-color: var(--accent) !important;
+	/* Visible cursor */
+}
+
+/* Placeholder styling */
+.MuiInputBase-input::placeholder {
+	color: rgba(255, 255, 255, 0.4) !important;
+	/* Subtle but visible */
+	opacity: 1 !important;
+}
+
+/* Label Styling */
+.MuiInputLabel-root {
+	color: rgba(255, 255, 255, 0.7) !important;
+	font-weight: 100 !important;
+	font-size: 0.9rem !important;
+	max-width: 90%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	z-index: 1;
+	/* Ensure label sits above input bg */
+}
+
+.MuiInputLabel-root.Mui-focused {
+	color: var(--accent) !important;
+}
+
+.MuiInputLabel-shrink {
+	transform: translate(12px, 7px) scale(0.75) !important;
+}
+
+/* Global Selection Color */
+::selection {
+	background-color: rgba(0, 242, 254, 0.3);
+	color: #fff;
+}
